@@ -1,241 +1,269 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Odogwu Spender — Token Presale</title>
-  <meta name="description" content="Odogwu Spender — Get in early for December giveaway! Presale landing page." />
-  <style>
-    :root{
-      --bg:#0b1020;
-      --card:#0f1724;
-      --muted:#98a0b3;
-      --accent:#ff6b35;
-      --accent-2:#ffb86b;
-      --glass: rgba(255,255,255,0.04);
-      --white: #ffffff;
-      --radius:14px;
-      --maxw:980px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;
-      background:linear-gradient(180deg,#05060a 0%, #07102a 60%);
-      color:var(--white);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px 16px;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      gap:20px;
-    }
+<meta charset="UTF-8">
+<title>Odogwu Spender – Official Presale</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    .container{
-      width:100%;
-      max-width:var(--maxw);
-      margin:0 auto;
-    }
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+  }
 
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .brand{
-      display:flex;
-      gap:12px;
-      align-items:center;
-    }
-    .logo{
-      width:48px;
-      height:48px;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:800;
-      letter-spacing:0.6px;
-      color:#111;
-      box-shadow:0 10px 30px rgba(255,107,53,0.12);
-    }
-    .brand h2{margin:0;font-size:18px}
-    .tag{color:var(--muted);font-size:13px}
+  body {
+    background: #0b0b0e;
+    color: #f1f1f1;
+    line-height: 1.6;
+    padding-bottom: 100px;
+  }
 
-    .hero{
-      margin-top:16px;
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border-radius:var(--radius);
-      padding:22px;
-      display:flex;
-      align-items:flex-start;
-      gap:18px;
-      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
-    }
-    .hero-left{flex:1}
-    .hero-right{width:320px}
-    h1{margin:0;font-size:28px;letter-spacing:0.2px}
-    .lead{margin:8px 0 14px;color:var(--muted)}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      display:inline-block;
-      padding:12px 16px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:#0d0b09;
-      border-radius:10px;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow:0 8px 18px rgba(255,107,53,0.12);
-    }
-    .btn.ghost{
-      background:transparent;
-      border:1px solid rgba(255,255,255,0.06);
-      color:var(--white);
-      font-weight:600;
-    }
-    .pill{
-      display:inline-block;
-      padding:8px 10px;
-      background:var(--glass);
-      border-radius:999px;
-      color:var(--accent-2);
-      font-weight:700;
-      font-size:13px;
-    }
+  header {
+    padding: 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
 
-    .grid{
-      display:grid;
-      grid-template-columns:1fr 320px;
-      gap:18px;
-      margin-top:18px;
-    }
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      border-radius:12px;
-      padding:14px;
-      box-shadow:0 6px 20px rgba(2,6,23,0.5);
-    }
-    .muted{color:var(--muted);font-size:14px}
+  header .muted {
+    font-size: 14px;
+    opacity: .65;
+    letter-spacing: 1px;
+  }
 
-    /* tokenomics bars */
-    .bar{
-      background:rgba(255,255,255,0.03);
-      border-radius:10px;
-      height:12px;
-      overflow:hidden;
-      margin-top:8px;
-    }
-    .bar > i{
-      display:block;
-      height:100%;
-      border-radius:10px;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-    }
-    .meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+  .hero {
+    padding: 60px 20px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+  }
 
-    /* roadmap */
-    .timeline{margin-top:6px}
-    .tl-item{display:flex;gap:12px;align-items:flex-start;margin:12px 0}
-    .tl-dot{width:12px;height:12px;border-radius:50%;background:var(--accent)}
-    .tl-content{color:var(--muted);font-size:14px}
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #ffdf6b, #ffae00);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow 4s infinite ease-in-out alternate;
+  }
 
-    /* aside smaller */
-    aside .card{margin-bottom:12px}
+  .hero .muted {
+    font-size: 18px;
+    opacity: .8;
+    margin-bottom: 20px;
+  }
 
-    /* footer */
-    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:18px}
+  .btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 26px;
+    border-radius: 8px;
+    background: #ffb300;
+    color: #121212;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform .3s, box-shadow .3s;
+    animation: popIn 1.2s ease;
+  }
 
-    /* responsive */
-    @media(max-width:900px){
-      .grid{grid-template-columns:1fr}
-      .hero-right{width:100%}
-    }
+  .btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 0 18px #ffb30080;
+  }
 
-    /* small helpers */
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; font-size:13px; color:var(--muted)}
-    a.social{display:inline-block;margin-right:8px;color:var(--muted);text-decoration:none;font-size:14px}
-    .note{font-size:13px;color:var(--muted);margin-top:8px}
-    .contact{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-    .small{font-size:13px;color:var(--muted)}
-    .center{display:flex;align-items:center;justify-content:center}
-    /* modal (buy) */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px}
-    .modal{background:linear-gradient(180deg,#071028,#0f1730);border-radius:12px;padding:18px;max-width:520px;width:100%}
-    .modal .mono{color:#dbe7ff}
-    .modal .close{background:transparent;border:0;color:var(--muted);font-size:18px;cursor:pointer}
-    .show{display:flex !important}
-  </style>
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">OS</div>
-        <div>
-          <h2>Odogwu Spender</h2>
-          <div class="tag">Launch · Presale · Tokenomics</div>
-        </div>
-      </div>
+  /* Layout */
+  .grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 18px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 20px;
+  }
 
-      <div class="pill">December Giveaway — Join to win!</div>
-    </header>
+  .card {
+    background: #15151b;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.06);
+    animation: floatUp .7s ease;
+  }
 
-    <section class="hero">
-      <div class="hero-left">
-        <h1>Odogwu Spender</h1>
-        <p class="lead muted">Get in early for the December giveaway! Limited presale slots — quick delivery & verified tokenomics.</p>
+  h3 {
+    margin-bottom: 12px;
+    font-weight: 700;
+    color: #ffc533;
+  }
 
-        <div class="cta-row">
-          <a class="btn" href="#buy" id="open-buy">Buy / Presale</a>
-          <a class="btn ghost" href="#whitepaper">Whitepaper</a>
-          <a class="btn ghost" href="#roadmap">Roadmap</a>
+  .muted {
+    opacity: .7;
+    font-size: 14px;
+  }
+
+  /* Hybrid animations */
+  @keyframes fadeIn {
+    0% { opacity: 0; transform:
+        <div class="card" id="tokenomics" style="margin-top:16px">
+          <h3 style="margin-top:0">Tokenomics</h3>
+
+          <div class="meta"><span>Presale — 20%</span><span>200,000</span></div>
+          <div class="bar"><i style="width:20%"></i></div>
+
+          <div class="meta" style="margin-top:10px"><span>Team (Locked) — 10%</span><span>100,000</span></div>
+          <div class="bar"><i style="width:10%"></i></div>
+
+          <div class="meta" style="margin-top:10px"><span>Liquidity — 40%</span><span>400,000</span></div>
+          <div class="bar"><i style="width:40%"></i></div>
+
+          <div class="meta" style="margin-top:10px"><span>Rewards — 30%</span><span>300,000</span></div>
+          <div class="bar"><i style="width:30%"></i></div>
         </div>
 
-        <div style="margin-top:14px" class="contact">
-          <div class="small mono">Contract: <span id="contract">CONTRACT_ADDRESS</span></div>
-          <div style="flex:1"></div>
-          <div class="small mono">Supply: 1,000,000</div>
+        <div class="card" id="roadmap" style="margin-top:16px">
+          <h3 style="margin-top:0">Roadmap</h3>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content"><strong>Phase 1:</strong> Token launch, smart contract deployment, presale push</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content"><strong>Phase 2:</strong> Community growth, partnerships, meme campaign</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-content"><strong>Phase 3:</strong> CEX listing, influencer push, reward rollout</div>
+            </div>
+          </div>
         </div>
+      </main>
 
-        <div class="note">Tip: Replace <code>CONTRACT_ADDRESS</code> above with the real contract address before publishing.</div>
-      </div>
-
-      <aside class="hero-right">
+      <aside>
         <div class="card">
-          <h3 style="margin:0 0 8px 0">Buy / Presale</h3>
-          <p class="muted">We accept payments via DEX widget or manual swap. Use the contract address above and follow instructions in the buy modal.</p>
-          <div style="margin-top:12px">
-            <a class="btn" id="open-buy-2" href="#buy">Open Presale Instructions</a>
+          <h3 style="margin:0 0 8px 0">Countdown</h3>
+          <p class="muted">Presale ends in:</p>
+
+          <div id="countdown" style="font-size:22px;margin-top:6px;font-weight:700;color:var(--accent-2)">
+            Loading...
           </div>
         </div>
 
-        <div class="card" style="margin-top:12px">
-          <h3 style="margin:0 0 8px 0">Social</h3>
-          <div style="margin-bottom:8px" class="muted">
-            <a class="social" href="#" aria-label="twitter">Twitter</a>
-            <a class="social" href="#" aria-label="telegram">Telegram</a>
-            <a class="social" href="#" aria-label="discord">Discord</a>
-          </div>
-          <div class="muted small">Contact: WhatsApp: <a href="https://wa.me/2348111633264" style="color:var(--accent);text-decoration:none">+234 811 163 3264</a></div>
+        <div class="card">
+          <h3 style="margin:0 0 8px 0">Progress</h3>
+          <p class="muted">Presale sold:</p>
+          <div class="bar"><i id="saleBar" style="width:0%"></i></div>
+          <div class="muted small" style="margin-top:6px" id="saleText">0%</div>
         </div>
       </aside>
-    </section>
+    </div>
 
-    <div class="grid">
-      <main>
-        <div class="card">
-          <h3 style="margin-top:0">About the Token</h3>
-          <p class="muted mono">Odogwu Spender is a community-first meme token built for fun, giveaways and community rewards. Replace this paragraph with the project's utility and short use-cases.</p>
-          <p class="muted">Quick facts:</p>
-          <ul class="muted">
-            <li>Total supply: <strong>1,000,000</strong></li>
-            <li>Presale allocation: <strong>20%</strong></li>
-            <li>Team: <strong>10% (locked)</strong></li>
-          </ul>
-        </div>
 
-        <div class="card" id="tokenomics" st
+    <footer>
+      © 2025 Odogwu Spender • Designed by Noble • WhatsApp: 08111633264
+    </footer>
+  </div>
+
+
+  <!-- BUY MODAL -->
+  <div class="modal-backdrop" id="modal-bg">
+    <div class="modal">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 style="margin:0">Presale Instructions</h3>
+        <button class="close" id="close-modal">×</button>
+      </div>
+
+      <p class="mono" style="margin-top:12px">
+        1. Copy the contract address:<br>
+        <strong id="contract2" style="font-size:15px;color:var(--accent-2)">CONTRACT_ADDRESS</strong><br><br>
+
+        2. Open your DEX or wallet (Trust Wallet / MetaMask)<br>
+        3. Choose the chain (BSC / SOL / ETH depending on token)<br>
+        4. Paste the contract<br>
+        5. Set slippage 3–8%<br>
+        6. Confirm purchase<br><br>
+
+        If you want help, message us directly.
+      </p>
+
+      <a href="https://wa.me/2348111633264" class="btn" style="margin-top:12px;display:block;text-align:center">
+        WhatsApp Support
+      </a>
+    </div>
+  </div>
+
+
+  <!-- SCRIPTS -->
+  <script>
+    // BUY MODAL FUNCTIONALITY
+    const modalBg = document.getElementById('modal-bg');
+    const open1 = document.getElementById('open-buy');
+    const open2 = document.getElementById('open-buy-2');
+    const closeBtn = document.getElementById('close-modal');
+
+    open1.onclick = open2.onclick = () => modalBg.classList.add('show');
+    closeBtn.onclick = () => modalBg.classList.remove('show');
+    modalBg.onclick = (e) => { if(e.target === modalBg) modalBg.classList.remove('show'); };
+
+
+    // COUNTDOWN TIMER (7 DAYS DEFAULT)
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+
+    function tick() {
+      const now = new Date().getTime();
+      const distance = endDate - now;
+
+      if (distance <= 0) {
+        document.getElementById('countdown').innerHTML = "ENDED";
+        return;
+      }
+
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('countdown').innerHTML =
+        d + "d " + h + "h " + m + "m " + s + "s ";
+    }
+    setInterval(tick, 1000);
+    tick();
+
+
+    // PROGRESS BAR (RANDOM DEMO)
+    let percent = 0;
+    function animateSale() {
+      if (percent >= 67) return;
+      percent++;
+      document.getElementById('saleBar').style.width = percent + "%";
+      document.getElementById('saleText').innerText = percent + "% sold";
+    }
+    setInterval(animateSale, 80);
+
+
+    // SCROLL REVEAL ANIMATION
+    const revealEls = document.querySelectorAll('.card, .hero, .tl-item');
+    const revealObs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      })
+    }, {threshold:0.2});
+
+    revealEls.forEach(el=>{
+      el.style.opacity = 0;
+      el.style.transform = "translateY(20px)";
+      el.style.transition = "0.7s ease";
+      revealObs.observe(el);
+    });
+  </script>
+
+</body>
+</html>
