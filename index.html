@@ -4,266 +4,186 @@
 <meta charset="UTF-8">
 <title>Odogwu Spender – Official Presale</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, sans-serif;
-  }
-
-  body {
-    background: #0b0b0e;
-    color: #f1f1f1;
-    line-height: 1.6;
-    padding-bottom: 100px;
-  }
-
+  /* RESET & BASIC STYLES */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
+  body { background: #0b0b0e; color: #f1f1f1; line-height: 1.6; padding-bottom: 100px; }
+  a { text-decoration: none; color: inherit; }
+  
+  /* HEADER */
   header {
-    padding: 20px;
-    text-align: center;
+    padding: 20px; text-align: center;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
+  header .muted { font-size: 14px; opacity: .65; letter-spacing: 1px; }
 
-  header .muted {
-    font-size: 14px;
-    opacity: .65;
-    letter-spacing: 1px;
-  }
-
-  .hero {
-    padding: 60px 20px;
-    text-align: center;
-    animation: fadeIn 1.5s ease;
-  }
-
-  h1 {
-    font-size: 48px;
-    font-weight: 800;
-    margin-bottom: 10px;
+  /* HERO */
+  .hero { padding: 60px 20px; text-align: center; animation: fadeIn 1.5s ease; }
+  .hero h1 {
+    font-size: 48px; font-weight: 800; margin-bottom: 10px;
     background: linear-gradient(90deg, #ffdf6b, #ffae00);
-    -webkit-background-clip: text;
-    color: transparent;
+    -webkit-background-clip: text; color: transparent;
     animation: glow 4s infinite ease-in-out alternate;
   }
-
-  .hero .muted {
-    font-size: 18px;
-    opacity: .8;
-    margin-bottom: 20px;
-  }
-
+  .hero .muted { font-size: 18px; opacity: .8; margin-bottom: 20px; }
   .btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 14px 26px;
-    border-radius: 8px;
-    background: #ffb300;
-    color: #121212;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform .3s, box-shadow .3s;
+    display: inline-block; margin-top: 15px; padding: 14px 26px;
+    border-radius: 8px; background: #ffb300; color: #121212; font-weight: bold;
+    text-decoration: none; transition: transform .3s, box-shadow .3s;
     animation: popIn 1.2s ease;
   }
+  .btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 18px #ffb30080; }
 
-  .btn:hover {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 0 18px #ffb30080;
-  }
+  /* GRID LAYOUT */
+  .grid { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; padding: 20px; max-width: 1100px; margin: auto; margin-top: 20px; }
+  .card { background: #15151b; padding: 20px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); animation: floatUp .7s ease; }
+  h3 { margin-bottom: 12px; font-weight: 700; color: #ffc533; }
+  .muted { opacity: .7; font-size: 14px; }
+  .bar { background: rgba(255,255,255,0.05); height: 12px; border-radius: 6px; margin-top: 4px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: #ffb300; width: 0; transition: width .5s; }
 
-  /* Layout */
-  .grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 18px;
-    padding: 20px;
-    max-width: 1100px;
-    margin: auto;
-    margin-top: 20px;
-  }
+  /* ROADMAP TIMELINE */
+  .timeline { position: relative; margin-top: 10px; }
+  .tl-item { display: flex; margin-bottom: 15px; opacity: 0; transform: translateY(20px); transition: 0.7s ease; }
+  .tl-dot { width: 12px; height: 12px; border-radius: 50%; background: #ffb300; margin-right: 10px; margin-top: 5px; }
+  .tl-content { flex: 1; }
 
-  .card {
-    background: #15151b;
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255,255,255,0.06);
-    animation: floatUp .7s ease;
-  }
+  /* FOOTER */
+  footer { text-align: center; padding: 20px; opacity: .6; font-size: 14px; }
 
-  h3 {
-    margin-bottom: 12px;
-    font-weight: 700;
-    color: #ffc533;
-  }
+  /* MODAL */
+  .modal-backdrop { position: fixed; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.7); display: none; justify-content:center; align-items:center; z-index: 10; }
+  .modal-backdrop.show { display:flex; }
+  .modal { background:#15151b; padding:20px; border-radius:10px; max-width:400px; width:90%; }
+  .close { background:none; border:none; color:#fff; font-size:20px; cursor:pointer; }
 
-  .muted {
-    opacity: .7;
-    font-size: 14px;
-  }
+  /* ANIMATIONS */
+  @keyframes fadeIn { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity:1; transform: translateY(0); } }
+  @keyframes popIn { 0% { opacity:0; transform: scale(0.95); } 100% { opacity:1; transform: scale(1); } }
+  @keyframes floatUp { 0% { opacity:0; transform: translateY(20px); } 100% { opacity:1; transform: translateY(0); } }
+  @keyframes glow { 0% { text-shadow: 0 0 6px #ffdf6b; } 100% { text-shadow: 0 0 18px #ffae00; } }
+</style>
+</head>
+<body>
 
-  /* Hybrid animations */
-  @keyframes fadeIn {
-    0% { opacity: 0; transform:
-        <div class="card" id="tokenomics" style="margin-top:16px">
-          <h3 style="margin-top:0">Tokenomics</h3>
+<header>
+  <div class="muted">Official Presale – Odogwu Spender Token</div>
+</header>
 
-          <div class="meta"><span>Presale — 20%</span><span>200,000</span></div>
-          <div class="bar"><i style="width:20%"></i></div>
+<section class="hero">
+  <h1>Odogwu Spender</h1>
+  <div class="muted">Join the presale before it's too late!</div>
+  <a href="#modal-bg" class="btn" id="open-buy">Buy Now</a>
+</section>
 
-          <div class="meta" style="margin-top:10px"><span>Team (Locked) — 10%</span><span>100,000</span></div>
-          <div class="bar"><i style="width:10%"></i></div>
+<main>
+  <div class="grid">
+    <!-- MAIN CONTENT -->
+    <div>
+      <div class="card" id="tokenomics">
+        <h3>Tokenomics</h3>
+        <div class="meta"><span>Presale — 20%</span><span>200,000</span></div>
+        <div class="bar"><i style="width:20%"></i></div>
 
-          <div class="meta" style="margin-top:10px"><span>Liquidity — 40%</span><span>400,000</span></div>
-          <div class="bar"><i style="width:40%"></i></div>
+        <div class="meta" style="margin-top:10px"><span>Team (Locked) — 10%</span><span>100,000</span></div>
+        <div class="bar"><i style="width:10%"></i></div>
 
-          <div class="meta" style="margin-top:10px"><span>Rewards — 30%</span><span>300,000</span></div>
-          <div class="bar"><i style="width:30%"></i></div>
-        </div>
+        <div class="meta" style="margin-top:10px"><span>Liquidity — 40%</span><span>400,000</span></div>
+        <div class="bar"><i style="width:40%"></i></div>
 
-        <div class="card" id="roadmap" style="margin-top:16px">
-          <h3 style="margin-top:0">Roadmap</h3>
-
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content"><strong>Phase 1:</strong> Token launch, smart contract deployment, presale push</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content"><strong>Phase 2:</strong> Community growth, partnerships, meme campaign</div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-content"><strong>Phase 3:</strong> CEX listing, influencer push, reward rollout</div>
-            </div>
-          </div>
-        </div>
-      </main>
-
-      <aside>
-        <div class="card">
-          <h3 style="margin:0 0 8px 0">Countdown</h3>
-          <p class="muted">Presale ends in:</p>
-
-          <div id="countdown" style="font-size:22px;margin-top:6px;font-weight:700;color:var(--accent-2)">
-            Loading...
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 8px 0">Progress</h3>
-          <p class="muted">Presale sold:</p>
-          <div class="bar"><i id="saleBar" style="width:0%"></i></div>
-          <div class="muted small" style="margin-top:6px" id="saleText">0%</div>
-        </div>
-      </aside>
-    </div>
-
-
-    <footer>
-      © 2025 Odogwu Spender • Designed by Noble • WhatsApp: 08111633264
-    </footer>
-  </div>
-
-
-  <!-- BUY MODAL -->
-  <div class="modal-backdrop" id="modal-bg">
-    <div class="modal">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h3 style="margin:0">Presale Instructions</h3>
-        <button class="close" id="close-modal">×</button>
+        <div class="meta" style="margin-top:10px"><span>Rewards — 30%</span><span>300,000</span></div>
+        <div class="bar"><i style="width:30%"></i></div>
       </div>
 
-      <p class="mono" style="margin-top:12px">
-        1. Copy the contract address:<br>
-        <strong id="contract2" style="font-size:15px;color:var(--accent-2)">CONTRACT_ADDRESS</strong><br><br>
-
-        2. Open your DEX or wallet (Trust Wallet / MetaMask)<br>
-        3. Choose the chain (BSC / SOL / ETH depending on token)<br>
-        4. Paste the contract<br>
-        5. Set slippage 3–8%<br>
-        6. Confirm purchase<br><br>
-
-        If you want help, message us directly.
-      </p>
-
-      <a href="https://wa.me/2348111633264" class="btn" style="margin-top:12px;display:block;text-align:center">
-        WhatsApp Support
-      </a>
+      <div class="card" id="roadmap">
+        <h3>Roadmap</h3>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><strong>Phase 1:</strong> Token launch, smart contract deployment, presale push</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><strong>Phase 2:</strong> Community growth, partnerships, meme campaign</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-content"><strong>Phase 3:</strong> CEX listing, influencer push, reward rollout</div></div>
+        </div>
+      </div>
     </div>
+
+    <!-- SIDEBAR -->
+    <aside>
+      <div class="card">
+        <h3>Countdown</h3>
+        <p class="muted">Presale ends in:</p>
+        <div id="countdown" style="font-size:22px;margin-top:6px;font-weight:700;color:#ffb300;">Loading...</div>
+      </div>
+
+      <div class="card">
+        <h3>Progress</h3>
+        <p class="muted">Presale sold:</p>
+        <div class="bar"><i id="saleBar" style="width:0%"></i></div>
+        <div class="muted small" style="margin-top:6px" id="saleText">0%</div>
+      </div>
+    </aside>
   </div>
+</main>
 
+<footer>
+  © 2025 Odogwu Spender • Designed by Noble • WhatsApp: 08111633264
+</footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // BUY MODAL FUNCTIONALITY
-    const modalBg = document.getElementById('modal-bg');
-    const open1 = document.getElementById('open-buy');
-    const open2 = document.getElementById('open-buy-2');
-    const closeBtn = document.getElementById('close-modal');
+<!-- BUY MODAL -->
+<div class="modal-backdrop" id="modal-bg">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>Presale Instructions</h3>
+      <button class="close" id="close-modal">×</button>
+    </div>
+    <p style="margin-top:12px">
+      1. Copy the contract address:<br>
+      <strong id="contract2" style="font-size:15px;color:#ffb300;">CONTRACT_ADDRESS</strong><br><br>
+      2. Open your wallet (Trust Wallet / MetaMask)<br>
+      3. Choose the chain (BSC / SOL / ETH)<br>
+      4. Paste the contract<br>
+      5. Set slippage 3–8%<br>
+      6. Confirm purchase<br><br>
+      Message us if you need help.
+    </p>
+    <a href="https://wa.me/2348111633264" class="btn" style="margin-top:12px;display:block;text-align:center">WhatsApp Support</a>
+  </div>
+</div>
 
-    open1.onclick = open2.onclick = () => modalBg.classList.add('show');
-    closeBtn.onclick = () => modalBg.classList.remove('show');
-    modalBg.onclick = (e) => { if(e.target === modalBg) modalBg.classList.remove('show'); };
+<script>
+  // MODAL
+  const modalBg = document.getElementById('modal-bg');
+  const openBtn = document.getElementById('open-buy');
+  const closeBtn = document.getElementById('close-modal');
+  openBtn.onclick = () => modalBg.classList.add('show');
+  closeBtn.onclick = () => modalBg.classList.remove('show');
+  modalBg.onclick = e => { if(e.target===modalBg) modalBg.classList.remove('show'); };
 
+  // COUNTDOWN TIMER
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  function tick() {
+    const now = new Date().getTime();
+    const distance = endDate - now;
+    if(distance<=0){ document.getElementById('countdown').innerHTML="ENDED"; return; }
+    const d=Math.floor(distance/(1000*60*60*24));
+    const h=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+    const m=Math.floor((distance%(1000*60*60))/(1000*60));
+    const s=Math.floor((distance%(1000*60))/1000);
+    document.getElementById('countdown').innerHTML=d+"d "+h+"h "+m+"m "+s+"s";
+  }
+  setInterval(tick,1000); tick();
 
-    // COUNTDOWN TIMER (7 DAYS DEFAULT)
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 7);
+  // PROGRESS BAR DEMO
+  let percent=0;
+  function animateSale() { if(percent>=67) return; percent++; document.getElementById('saleBar').style.width=percent+"%"; document.getElementById('saleText').innerText=percent+"% sold"; }
+  setInterval(animateSale,80);
 
-    function tick() {
-      const now = new Date().getTime();
-      const distance = endDate - now;
-
-      if (distance <= 0) {
-        document.getElementById('countdown').innerHTML = "ENDED";
-        return;
-      }
-
-      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById('countdown').innerHTML =
-        d + "d " + h + "h " + m + "m " + s + "s ";
-    }
-    setInterval(tick, 1000);
-    tick();
-
-
-    // PROGRESS BAR (RANDOM DEMO)
-    let percent = 0;
-    function animateSale() {
-      if (percent >= 67) return;
-      percent++;
-      document.getElementById('saleBar').style.width = percent + "%";
-      document.getElementById('saleText').innerText = percent + "% sold";
-    }
-    setInterval(animateSale, 80);
-
-
-    // SCROLL REVEAL ANIMATION
-    const revealEls = document.querySelectorAll('.card, .hero, .tl-item');
-    const revealObs = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = "translateY(0)";
-        }
-      })
-    }, {threshold:0.2});
-
-    revealEls.forEach(el=>{
-      el.style.opacity = 0;
-      el.style.transform = "translateY(20px)";
-      el.style.transition = "0.7s ease";
-      revealObs.observe(el);
-    });
-  </script>
+  // SCROLL REVEAL
+  const revealEls=document.querySelectorAll('.card,.hero,.tl-item');
+  const observer=new IntersectionObserver(entries=>{ entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.style.opacity=1; entry.target.style.transform="translateY(0)"; } }); }, {threshold:0.2});
+  revealEls.forEach(el=>{ el.style.opacity=0; el.style.transform="translateY(20px)"; el.style.transition="0.7s ease"; observer.observe(el); });
+</script>
 
 </body>
 </html>
